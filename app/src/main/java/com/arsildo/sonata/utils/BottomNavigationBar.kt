@@ -95,8 +95,8 @@ fun BottomNavigationBar(navController: NavHostController) {
                     }
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = MaterialTheme.colorScheme.primaryContainer,
-                    indicatorColor = MaterialTheme.colorScheme.onBackground
+                    selectedIconColor = MaterialTheme.colorScheme.onBackground,
+                    indicatorColor = MaterialTheme.colorScheme.inversePrimary
                 )
             )
         }

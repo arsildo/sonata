@@ -1,10 +1,9 @@
 package com.arsildo.sonata
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -12,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.arsildo.sonata.preferences.PreferencesScreen
 import com.arsildo.sonata.utils.BottomNavigationBar
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -22,7 +22,9 @@ fun SonataNavigationGraph() {
 
     Scaffold(
         contentWindowInsets = WindowInsets(top = 0, bottom = 0),
-        bottomBar = { BottomNavigationBar(navController = navController) }
+        bottomBar = { BottomNavigationBar(navController = navController) },
+        containerColor = MaterialTheme.colorScheme.background,
+        contentColor = MaterialTheme.colorScheme.onBackground
     ) { contentPadding ->
         NavHost(
             navController = navController,
@@ -30,7 +32,6 @@ fun SonataNavigationGraph() {
             modifier = Modifier
                 .padding(contentPadding)
                 .padding(horizontal = 16.dp)
-                .background(MaterialTheme.colors.background)
         ) {
 
             composable(route = Destinations.BOOKS_ROUTE) {
@@ -42,10 +43,12 @@ fun SonataNavigationGraph() {
             }
 
             composable(route = Destinations.PREFERENCES_ROUTE) {
-
+                PreferencesScreen()
             }
 
         }
     }
 
 }
+
+
